@@ -6,7 +6,7 @@ let secretNumber=(Math.random()*10).toFixed(0);
 let time=prompt(` How Many time Do you Want to try Guess a Number?`);
 
 
-if(time>=0){time=time;}else{time=1;}
+if(time<0 || time==null){time=1;}else{time=time;}
 
 document.querySelector("#time").textContent='Time ' +time;
 
@@ -43,18 +43,18 @@ function again(){
 function check (){
 
     userInput=document.querySelector("#box").value;
+if(userInput==''){
+    alert('Please Write a valid Number !');
+}else{
+
 
     if(time==0){
         document.querySelector("#check").disabled=true;
         document.querySelector("#time").style.color='red';
-         document.querySelector("#time").textContent="Game's End,\n Try Again! ";
-    }else{
-        
-        userInput=document.querySelector("#box").value;
+       alert("Game's End,\n Try Again!");
 
-//        if(typeof(userInput)=="number" && (userInput>=0 && userInput<=10)){
-
-            
+       }else{
+//        if(typeof(userInput)=="number" && (userInput>=0 && userInput<=10)){            
         time-=1;
         document.querySelector("body").style.background="darkblue";
         userInput=Number(document.querySelector(".guess").value);
@@ -75,6 +75,8 @@ function check (){
     //        alert("Please write a Number in this range: 0 to 10");
       //  }
     }
+}
+
 }
 //.........................................................
     
